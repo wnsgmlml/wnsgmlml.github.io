@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Arts Banquet 2025">
+  <meta name="description" content="Arts Banquet Personality Quiz">
+
+  <!-- SNS share -->
+  <meta property="og:url" content="https://artsbanquetquiz.netlify.app" />
+  <meta property="og:title" content="Arts Banquet Personality Quiz" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="img/share.png" />
+  <meta property="og:description" content="Arts Banquet Personality Quiz" />
+
+  <title>Arts Banquet Personality Quiz</title>
+  
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aubrey&family=Skranji:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Skranji', cursive;
+      background-color: #f5f0ff;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239873dd' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    
+    .container {
+      max-width: 800px;
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+    
+    h1 {
+      font-family: 'Aubrey', cursive;
+      color: #6a2ec7;
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+    
+    #main {
+      text-align: center;
+    }
+    
+    #intro {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    #start-btn {
+      background-color: #6a2ec7;
+      border: none;
+      font-size: 1.2rem;
+      padding: 10px 40px;
+      border-radius: 30px;
+      transition: all 0.3s;
+    }
+    
+    #start-btn:hover {
+      background-color: #5723a5;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+    
+    .qBox {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #6a2ec7;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+    
+    .answerBox {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .answerBtn {
+      background-color: white;
+      border: 2px solid #6a2ec7;
+      color: #6a2ec7;
+      border-radius: 10px;
+      padding: 15px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .answerBtn:hover {
+      background-color: #6a2ec7;
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .status {
+      margin-top: 30px;
+      height: 10px;
+      background-color: #e9ecef;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    
+    .statusBar {
+      height: 100%;
+      background-color: #6a2ec7;
+      transition: width 0.5s;
+    }
+    
+    #result {
+      text-align: center;
+    }
+    
+    .resultname {
+      font-size: 2.5rem;
+      color: #6a2ec7;
+      margin: 20px 0;
+    }
+    
+    .resultDesc {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    
+    #resultImg {
+      margin: 20px auto;
+      max-width: 300px;
+    }
+    
+    .placeholder-img {
+      width: 100%;
+      height: 200px;
+      background-color: #f0e6ff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6a2ec7;
+      font-size: 1.5rem;
+    }
+    
+    .restart-btn {
+      background-color: #6a2ec7;
+      color: white;
+      border: none;
+      font-size: 1.1rem;
+      padding: 10px 30px;
+      border-radius: 30px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .restart-btn:hover {
+      background-color: #5723a5;
+      transform: translateY(-3px);
+    }
+    
+    .illustration-space {
+      height: 120px;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .info-box {
+      background-color: #f0e6ff;
+      border-left: 4px solid #6a2ec7;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 0 5px 5px 0;
+      font-size: 0.95rem;
+    }
+    
+    .info-box p {
+      margin: 0;
+    }
+    
+    .character-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .character-title {
+      font-weight: bold;
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+      color: #6a2ec7;
+    }
+    
+    .mbti-type {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #888;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Main screen -->
+    <section id="main">
+      <h1>Arts Banquet Personality Quiz</h1>
+      <p id="intro">Discover which fictional character matches your Arts Banquet persona! Answer a few questions about how you'd experience the banquet and find out who you really are.</p>
+      <div class="illustration-space">
+        <img src="/api/placeholder/300/120" alt="Arts Banquet Illustration" />
+      </div>
+      <button id="start-btn" class="btn btn-primary" onclick="begin()">Start Quiz</button>
+    </section>
+
+    <!-- Questions screen -->
+    <section id="qna" style="display: none;">
+      <div class="qBox"></div>
+      <div class="illustration-space">
+        <img id="question-img" src="/api/placeholder/300/120" alt="Question Illustration" />
+      </div>
+      <div id="info-container"></div>
+      <div class="answerBox"></div>
+      <div class="status">
+        <div class="statusBar"></div>
+      </div>
+    </section>
+
+    <!-- Results screen -->
+    <section id="result" style="display: none;">
+      <h2>You Are:</h2>
+      <div class="character-title"></div>
+      <div class="mbti-type"></div>
+      <div id="resultImg">
+        <img class="character-img" src="/api/placeholder/300/300" alt="Character" />
+      </div>
+      <div class="resultDesc"></div>
+      <button class="restart-btn" onclick="restartQuiz()">Take Quiz Again</button>
+    </section>
+  </div>
+
+  <script>
+    // Questions for the personality test with new format
+    const questions = [
+      {
+        question: "What's your #1 priority before heading to the arts banquet?",
+        info: "The annual Arts Banquet celebrates all forms of creative expression with performances, displays, and of course, great food! Ticket sales only run until the 16th so make sure to get your tickets!",
+        choices: [
+          { text: "Planning the perfect outfit.", type: ['SJ'] },
+          { text: "Seeing all the performances and celebrating arts!", type: ['NF'] },
+          { text: "Talking to everyone and soaking in the vibes.", type: ['EP'] },
+          { text: "Honestly? I just want the food.", type: ['ST'] }
+        ]
+      },
+      {
+        question: "What does your outfit say about you?",
+        choices: [
+          { text: "Daring and bold—everyone will remember it.", type: ['ET'] },
+          { text: "Elegant and coordinated. Style with substance.", type: ['TJ'] },
+          { text: "Whatever was clean… but still looks cool.", type: ['IP'] },
+          { text: "Whimsical, fun, and expressive.", type: ['NF'] }
+        ]
+      },
+      {
+        question: "What's your first stop when you arrive?",
+        choices: [
+          { text: "Photos with friends, obviously.", type: ['EF'] },
+          { text: "Find a quiet corner to chill.", type: ['IS'] },
+          { text: "Check out the art displays.", type: ['NT'] }
+        ]
+      },
+      {
+        question: "Which best describes your vibe during the banquet?",
+        choices: [
+          { text: "Social butterfly—I talk to everyone.", type: ['EF'] },
+          { text: "Floating between groups, taking everything in.", type: ['NE'] },
+          { text: "Hanging with my core people.", type: ['IS'] },
+          { text: "I people-watch more than I socialize.", type: ['IN'] }
+        ]
+      },
+      {
+        question: "What do you do when someone compliments your outfit?",
+        choices: [
+          { text: "Smile and return the compliment instantly!", type: ['EF'] },
+          { text: "Thank them and quietly feel great about it.", type: ['IF'] },
+          { text: "Act chill but secretly take a mental screenshot.", type: ['IP'] },
+          { text: "Nod and say thanks—no big deal.", type: ['IT'] }
+        ]
+      },
+      {
+        question: "You walk into the banquet and see a photo booth with props. What's your first move?",
+        choices: [
+          { text: "Grab the goofiest prop and strike a silly pose.", type: ['EP'] },
+          { text: "Help set it up better before taking a thoughtful photo.", type: ['SJ'] },
+          { text: "Take a fast selfie and move on to explore more.", type: ['SP'] },
+          { text: "Convince friends to do a group pose with a concept.", type: ['NJ'] }
+        ]
+      },
+      {
+        question: "You spot the mini cannoli for dessert. What do you do?",
+        info: "The dinner will be catered. Here is the menu: Veal or chicken cutlet in tomato sauce, penne pasta with a tomato sauce, roasted potatoes, salad, Italian bun, and mini cannoli. There is a rumor that there will be an icecream bar with yummy toppings 😋",
+        choices: [
+          { text: "Take one and Instagram them before eating.", type: ['ES'] },
+          { text: "Grab one and savor it slowly.", type: ['IS'] },
+          { text: "Skip it—I'm saving room for the ice cream bar.", type: ['NT'] },
+          { text: "Eat it together with friends!", type: ['EF'] }
+        ]
+      },
+      {
+        question: "Where are you during the performances?",
+        info: "The audition to show off your talents is being held on the 20th of May. Performers will get discounts 🥰",
+        choices: [
+          { text: "On stage, obviously.", type: ['ET'] },
+          { text: "In the front row, clapping the loudest.", type: ['EF'] },
+          { text: "Quietly enjoying from the back.", type: ['IN'] },
+          { text: "I helped set it all up behind the scenes.", type: ['IS'] }
+        ]
+      },
+      {
+        question: "What art form speaks to you most?",
+        choices: [
+          { text: "Theater or film.", type: ['EN'] },
+          { text: "Music or singing.", type: ['EF'] },
+          { text: "Painting, design, or crafts.", type: ['IS'] },
+          { text: "Writing or poetry.", type: ['IN'] }
+        ]
+      },
+      {
+        question: "How do you usually react when something unexpected happens at events?",
+        choices: [
+          { text: "Laugh and roll with it.", type: ['EP'] },
+          { text: "Step in and help fix it.", type: ['ET'] },
+          { text: "Observe and analyze quietly.", type: ['IT'] },
+          { text: "Avoid attention and stay out of the mess.", type: ['IS'] }
+        ]
+      },
+      {
+        question: "The ice cream bar opens. What's your move?",
+        choices: [
+          { text: "Make the tallest, weirdest combo possible.", type: ['EP'] },
+          { text: "Craft a perfect scoop with strategic toppings.", type: ['TJ'] },
+          { text: "Pick your favorite flavor and enjoy it with friends.", type: ['SF'] },
+          { text: "I wasn't going to get any, but now I'm curious.", type: ['IN'] }
+        ]
+      },
+      {
+        question: "How do you feel once the banquet ends?",
+        choices: [
+          { text: "Energized and already planning next year!", type: ['EN'] },
+          { text: "Touched by all the emotions and memories.", type: ['NF'] },
+          { text: "Exhausted but proud.", type: ['SJ'] },
+          { text: "I vanish before the lights come back on.", type: ['IT'] }
+        ]
+      }
+    ];
+
+    // Character results with MBTI info
+    const characterResults = {
+      'ENTJ': {
+        character: "Jafar",
+        description: "Like Jafar, you're strategic and commanding at the Arts Banquet. You have a vision for how the night should go and aren't afraid to take charge to make it happen. While others might just enjoy the moment, you're thinking three steps ahead, whether that's planning the perfect photo op or organizing your friend group's activities.",
+        image: "/api/placeholder/300/300"
+      },
+      'ENFJ': {
+        character: "Glinda the Good Witch",
+        description: "Just like Glinda, you're the charismatic guide of the Arts Banquet. You have a natural talent for bringing out the best in everyone around you. You're enthusiastic about making sure everyone has a magical time, and you genuinely care about the connections and memories being made. Your warmth and encouragement inspire others!",
+        image: "/api/placeholder/300/300"
+      },
+      'ENTP': {
+        character: "Cheshire Cat",
+        description: "Like the Cheshire Cat, you bring wit and clever commentary to the Arts Banquet. You love to keep things interesting, often challenging conventions with your unique perspective. You float between social circles with ease, curious about everything and everyone. Your quick humor and ability to see possibilities others miss makes you unforgettable!",
+        image: "/api/placeholder/300/300"
+      },
+      'ENFP': {
+        character: "Ariel",
+        description: "Like Ariel, you bring enthusiastic curiosity to the Arts Banquet. You're drawn to new experiences and interesting people, eager to be 'part of that world.' Your genuine warmth connects diverse friend groups together. You see the magic in artistic expression and aren't afraid to dive into the unknown if it means discovering something wonderful!",
+        image: "/api/placeholder/300/300"
+      },
+      'ESTJ': {
+        character: "Tiana",
+        description: "Like Tiana, you bring practicality and reliability to the Arts Banquet. You appreciate well-organized events and might even help keep things running smoothly. You have clear goals for the evening and work efficiently to achieve them. Your practical approach to enjoying the banquet is balanced with your appreciation for everyone's hard work.",
+        image: "/api/placeholder/300/300"
+      },
+      'ESFJ': {
+        character: "Rapunzel",
+        description: "Like Rapunzel, you bring heartfelt enthusiasm to the Arts Banquet. You genuinely care about everyone having the best time possible and go out of your way to create harmony. The social connections are what matter most to you, and you thrive on bringing people together. Your natural warmth makes everyone feel special and included!",
+        image: "/api/placeholder/300/300"
+      },
+      'ESTP': {
+        character: "Gaston",
+        description: "Like Gaston, you bring confidence and showmanship to the Arts Banquet. You live fully in the moment and aren't afraid to be the center of attention. Action-oriented and energetic, you make bold choices that others might hesitate to try. Your charisma is magnetic, and you have a knack for creating memorable moments that get everyone talking!",
+        image: "/api/placeholder/300/300"
+      },
+      'ESFP': {
+        character: "Jasmine",
+        description: "Like Jasmine, you bring vivacity and authenticity to the Arts Banquet. You're not afraid to express yourself and follow your heart in the moment. Social and adventurous, you make the night come alive with your enthusiastic participation. You appreciate beauty in all forms and have a natural grace that draws others to you!",
+        image: "/api/placeholder/300/300"
+      },
+      'INTJ': {
+        character: "Wicked Witch of the West",
+        description: "Like the Wicked Witch, you observe the Arts Banquet with shrewd analysis. You see patterns and possibilities others miss, often formulating your own unique interpretations of the performances. While you might seem reserved, your mind is constantly working to understand the deeper meaning behind artistic expressions. You appreciate clever innovation and strategic thinking!",
+        image: "/api/placeholder/300/300"
+      },
+      'INFJ': {
+        character: "Mulan",
+        description: "Like Mulan, you bring quiet determination and insight to the Arts Banquet. You observe deeply, seeing beyond the surface to understand the true meaning of artistic expressions. Though you might appear reserved, you have strong convictions about creativity and authenticity. Your thoughtful perspectives and genuine care for others make your connections meaningful rather than numerous!",
+        image: "/api/placeholder/300/300"
+      },
+      'INTP': {
+        character: "Mad Hatter",
+        description: "Like the Mad Hatter, you bring fascinating intellectual curiosity to the Arts Banquet. You see connections between artistic expressions that others might miss entirely. While you might seem to be in your own world at times, your mind is constantly analyzing and questioning conventions. Your unique perspective adds depth to any artistic discussion!",
+        image: "/api/placeholder/300/300"
+      },
+      'INFP': {
+        character: "Belle",
+        description: "Like Belle, you bring depth and imagination to the Arts Banquet. You experience art on a profoundly personal level, always looking for meaning and authenticity. While you might be selective about your social interactions, those connections are genuine and meaningful. Your rich inner world gives you a unique appreciation for creative expression!",
+        image: "/api/placeholder/300/300"
+      },
+      'ISTJ': {
+        character: "White Rabbit",
+        description: "Like the White Rabbit, you bring dependability and attention to detail to the Arts Banquet. You appreciate structure and might notice aspects of performances or artwork that others overlook. You value tradition and quality craftsmanship in artistic expression. While you might not be the loudest voice in the room, your consistent support and keen observations are invaluable!",
+        image: "/api/placeholder/300/300"
+      },
+      'ISFJ': {
+        character: "Cinderella",
+        description: "Like Cinderella, you bring thoughtful appreciation and humble grace to the Arts Banquet. You notice and remember the small details that make the event special. Your quiet warmth creates a safe space for others to express themselves. While you may not seek the spotlight, your genuine support and kind presence enrich everyone's experience!",
+        image: "/api/placeholder/300/300"
+      },
+      'ISTP': {
+        character: "Shrek",
+        description: "Like Shrek, you bring independent thinking and practical skills to the Arts Banquet. You observe with a detached interest, appreciating the technical aspects of performances. You're not concerned with following social expectations and prefer genuine interactions over small talk. Your straightforward approach and hidden talents might surprise those who don't know you well!",
+        image: "/api/placeholder/300/300"
+      },
+      'ISFP': {
+        character: "Beast",
+        description: "Like the Beast, you bring depth and authentic emotion to the Arts Banquet. You experience art on a deeply personal level, with a natural aesthetic appreciation. You might prefer smaller, more intimate conversations to large group settings. Your genuine reactions to creative expression are unfiltered and heartfelt, revealing your passionate inner nature!",
+        image: "/api/placeholder/300/300"
+      }
+    };
+
+    // Track current question and personality scores
+    let currentQuestion = 0;
+    let personalityScores = {
+      E: 0, I: 0,
+      S: 0, N: 0,
+      T: 0, F: 0,
+      J: 0, P: 0
+    };
+
+    // Start the quiz
+    function begin() {
+      document.getElementById('main').style.display = 'none';
+      document.getElementById('qna').style.display = 'block';
+      showQuestion();
+    }
+
+    // Display current question and answers
+    function showQuestion() {
+      const qBox = document.querySelector('.qBox');
+      const answerBox = document.querySelector('.answerBox');
+      const statusBar = document.querySelector('.statusBar');
+      const infoContainer = document.getElementById('info-container');
+      
+      qBox.innerHTML = questions[currentQuestion].question;
+      answerBox.innerHTML = '';
+      
+      // Display info box if available
+      if (questions[currentQuestion].info) {
+        infoContainer.innerHTML = `
+          <div class="info-box">
+            <p>${questions[currentQuestion].info}</p>
+          </div>
+        `;
+      } else {
+        infoContainer.innerHTML = '';
+      }
+      
+      questions[currentQuestion].choices.forEach((choice, idx) => {
+        const button = document.createElement('button');
+        button.classList.add('answerBtn');
+        button.innerText = choice.text;
+        button.dataset.types = JSON.stringify(choice.type);
+        button.onclick = handleAnswer;
+        answerBox.appendChild(button);
+      });
+      
+      statusBar.style.width = `${(currentQuestion / questions.length) * 100}%`;
+    }
+
+    // Handle user answer selection
+    function handleAnswer(e) {
+      const types = JSON.parse(e.target.dataset.types);
+      types.forEach(type => {
+        // Parse multi-letter types like 'EF', 'NT', etc.
+        for (let i = 0; i < type.length; i++) {
+          personalityScores[type[i]]++;
+        }
+      });
+      
+      currentQuestion++;
+      
+      if (currentQuestion < questions.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    // Calculate final personality type
+    function calculatePersonality() {
+      let result = '';
+      result += personalityScores.E > personalityScores.I ? 'E' : 'I';
+      result += personalityScores.S > personalityScores.N ? 'S' : 'N';
+      result += personalityScores.T > personalityScores.F ? 'T' : 'F';
+      result += personalityScores.J > personalityScores.P ? 'J' : 'P';
+      return result;
+    }
+
+    // Display results
+    function showResult() {
+      document.getElementById('qna').style.display = 'none';
+      document.getElementById('result').style.display = 'block';
+      
+      const resultType = calculatePersonality();
+      const result = characterResults[resultType];
+      
+      document.querySelector('.character-title').innerText = result.character;
+      document.querySelector('.mbti-type').innerText = `(${resultType})`;
+      document.querySelector('.resultDesc').innerText = result.description;
+      
+      // Set character image
+      const characterImg = document.querySelector('.character-img');
+      characterImg.src = result.image;
+      characterImg.alt = result.character;
+    }
+
+    // Restart the quiz
+    function restartQuiz() {
+      currentQuestion = 0;
+      personalityScores = {
+        E: 0, I: 0,
+        S: 0, N: 0,
+        T: 0, F: 0,
+        J: 0, P: 0
+      };
+      
+      document.getElementById('result').style.display = 'none';
+      document.getElementById('main').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
